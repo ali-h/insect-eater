@@ -35,5 +35,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "author": {
+    "name": "Ali H",
+    "email": "alihassansng@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ali-h/insect-eater.git"
+  },
+  "license": "MIT"
 }
