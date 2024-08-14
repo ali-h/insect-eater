@@ -6,12 +6,31 @@
   width: 100%;
   max-height: 200px;
   position: relative;
+  user-select: none;
 }
 
 .owl-image {
   width: 200px;
   height: auto;
   object-fit: cover;
+  transition: all 0.2s;
+}
+
+@keyframes owl-eating {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.eating {
+  /* Forward animation for getting big and small */
+  animation: owl-eating 0.5s infinite;
 }
 
 /* Eye wrappers for the pupil tracking */
@@ -21,6 +40,8 @@
   height: 35px;
   top: 98px;
   transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Eye whites */
@@ -28,7 +49,7 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  position: absolute;
+  position: relative;
 }
 
 .owl-eye.left {
@@ -46,4 +67,6 @@
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
+  translate: translate(-50%, -50%);
+  transition: all 0.1s;
 }

@@ -8,12 +8,16 @@ const InsectTiles = ({ addInsect }) => {
   const handleClick = (type) => {
     // Random position, adjust as needed
     const position = {
-      // Random between 0 and 300
+      // Random between 0 and 300 (canvas width)
       x: Math.random() * 350,
-      // Random between 200 and 300
-      y: 200 + Math.random() * 100,
+      // Random between 100 and 300 (canvas height)
+      y: 100 + Math.random() * 220,
     };
-    addInsect(type, position);
+
+    // generate id for the insect
+    const id = `insect-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+    addInsect(id, type, position);
   };
 
   return (
