@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import antImage from '../assets/images/ant.png';
 import beetleImage from '../assets/images/beetle.png';
 import waspImage from '../assets/images/wasp.png';
+import Draggable from 'react-draggable';
+import '../styles/Insect.css';
 
-const Insect = ({ type, position }) => {
-  const [currentPosition, setCurrentPosition] = useState(position);
-
+const Insect = ({ type, position, setInsectPosition }) => {
   const getImage = () => {
     switch (type) {
       case 'ant':
@@ -20,17 +20,19 @@ const Insect = ({ type, position }) => {
   };
 
   return (
-    <div
-      className="insect"
-      style={{
-        position: 'absolute',
-        left: `${currentPosition.x}px`,
-        top: `${currentPosition.y}px`,
-        cursor: 'move',
+    <Draggable
+      bounds="parent"
+      defaultPosition={{ x: position.x, y: position.y }}
+      onDrag={(event, data) => {
+        console.log('x:', data.x, 'y:', data.y);
+        setInsectPosition({ x: data.x, y: data.y });
       }}
     >
-      <img src={getImage()} alt={type} className="insect-image" />
-    </div>
+      <div className="insect" style={{
+        backgroundImage: `url(${getImage()})`,
+        backgroundSize: 'contain'}}>
+      </div>
+    </Draggable>
   );
 };
 

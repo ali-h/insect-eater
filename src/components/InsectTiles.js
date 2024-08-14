@@ -10,8 +10,8 @@ const InsectTiles = ({ addInsect }) => {
     const position = {
       // Random between 0 and 300
       x: Math.random() * 350,
-      // Random between 300 and 400
-      y: 300 + Math.random() * 150,
+      // Random between 200 and 300
+      y: 200 + Math.random() * 100,
     };
     addInsect(type, position);
   };
