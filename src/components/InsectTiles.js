@@ -10,8 +10,8 @@ const InsectTiles = ({ addInsect }) => {
     const position = {
       // Random between 0 and 300 (canvas width)
       x: Math.random() * 350,
-      // Random between 100 and 300 (canvas height)
-      y: 100 + Math.random() * 220,
+      // Random between 100 and 210 (canvas height)
+      y: 100 + Math.random() * 210,
     };
 
     // generate id for the insect

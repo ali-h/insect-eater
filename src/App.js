@@ -5,13 +5,17 @@ import Insect from './components/Insect';
 import './styles/App.css';
 
 const App = () => {
+  const [score, setScore] = useState(0);
   const [insectPosition, setInsectPosition] = useState({ x: 0, y: 0 });
-  const [insects, setInsects] = useState([]);
+  const [insects, setInsects] = useState({});
   const draggableArea = useRef(null);
   const [owlRef, setOwlRef] = useState(null);
 
   const addInsect = (id, type, position) => {
-    setInsects([...insects, { id, type, position }]);
+    // Add the insect to the insects object
+    let newInsects = Object.assign({}, insects);
+    newInsects[id] = { type, position }
+    setInsects(newInsects);
   };
 
   const checkForRemoval = (id) => {
@@ -29,11 +33,13 @@ const App = () => {
       insectPosition.y >= owlPosition.y &&
       insectPosition.bottom <= owlPosition.bottom
     ) {
-      // Hide the insect by setting its opacity to 0
-      insect.style.opacity = 0;
+      // Remove the insect
+      let newInsects = Object.assign({}, insects);
+      delete newInsects[id];
+      setInsects(newInsects);
 
-      // Disable its draggability
-      insect.style.pointerEvents = 'none';
+      // Update the score
+      setScore(score + 1);
 
       // Add eating class to owl
       owlRef.current.classList.add('eating');
@@ -50,13 +56,16 @@ const App = () => {
       <div id="app">
         <InsectTiles addInsect={addInsect} />
         <div className="draggable-area" ref={draggableArea}>
+          <div className="score-wrapper">
+            <span className='score'>SCORE: {score}</span>
+          </div>
           <Owl insectPosition={insectPosition} setOwlRef={setOwlRef} />
-          {insects.map((insect, index) => (
+          {Object.keys(insects).map((key) => (
             <Insect
-              key={index}
-              id={insect.id}
-              type={insect.type}
-              position={insect.position}
+              key={key}
+              id={key}
+              type={insects[key].type}
+              position={insects[key].position}
               setInsectPosition={setInsectPosition}
               draggableArea={draggableArea}
               checkForRemoval={checkForRemoval}

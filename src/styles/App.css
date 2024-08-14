@@ -32,3 +32,20 @@
   height: 100%;
   overflow: hidden;
 }
+
+.score-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.score {
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 10px;
+  background-color: #89C33E;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
