@@ -6,6 +6,7 @@ import Draggable from 'react-draggable';
 import '../styles/Insect.css';
 
 const Insect = ({ id, type, position, setInsectPosition, draggableArea, checkForRemoval }) => {
+  const nodeRef = useRef(null);
   
   const handleDrag = (e, data) => {
     // Calculate percentage of the insect position relative to the parent container
@@ -37,19 +38,23 @@ const Insect = ({ id, type, position, setInsectPosition, draggableArea, checkFor
   };
 
   useEffect(() => {
+    // setting the initial eyes position
     handleDrag(null, position);
   }, []);
 
   return (
     <Draggable
       bounds="parent"
+      handle='.insect'
       defaultPosition={{ x: position.x, y: position.y }}
       onDrag={handleDrag}
+      nodeRef={nodeRef}
     >
       <div className="insect" style={{
         backgroundImage: `url(${getImage()})`,
         backgroundSize: 'contain'}}
         id={id}
+        ref={nodeRef}
       >
       </div>
     </Draggable>

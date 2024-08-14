@@ -12,6 +12,7 @@
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  user-select: none;
 }
 
 .insect-tile:hover {
@@ -22,4 +23,5 @@
   width: 80px;
   height: auto;
   object-fit: cover;
+  user-select: none;
 }

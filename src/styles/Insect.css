@@ -3,4 +3,6 @@
   width: 80px;
   height: 80px;
   cursor: grab;
+  /* on opacity and scale change, animate it */
+  transition: opacity 0.2s
 }

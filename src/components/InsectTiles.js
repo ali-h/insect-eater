@@ -15,7 +15,7 @@ const InsectTiles = ({ addInsect }) => {
     };
 
     // generate id for the insect
-    const id = `insect-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    const id = `${type}-${Math.floor(Math.random() * 1000)}`;
 
     addInsect(id, type, position);
   };

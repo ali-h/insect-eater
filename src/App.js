@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Owl from './components/Owl';
 import InsectTiles from './components/InsectTiles';
 import Insect from './components/Insect';
@@ -17,6 +17,7 @@ const App = () => {
   const checkForRemoval = (id) => {
     // Get the owl's position
     const owlPosition = owlRef.current.getBoundingClientRect();
+
     // Get the insect's position
     const insect = document.getElementById(id);
     const insectPosition = insect.getBoundingClientRect();
@@ -28,9 +29,11 @@ const App = () => {
       insectPosition.y >= owlPosition.y &&
       insectPosition.bottom <= owlPosition.bottom
     ) {
-      // Remove the insect
-      console.log('deleted', id);
-      setInsects(insects.filter((insect) => insect.id !== id));
+      // Hide the insect by setting its opacity to 0
+      insect.style.opacity = 0;
+
+      // Disable its draggability
+      insect.style.pointerEvents = 'none';
 
       // Add eating class to owl
       owlRef.current.classList.add('eating');
