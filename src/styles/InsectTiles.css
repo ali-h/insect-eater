@@ -1,0 +1,25 @@
+.insects-tiles {
+  display: flex;
+  gap: 1rem;
+  margin: 20px 0;
+}
+
+.insect-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #DEF0FC;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.insect-tile:hover {
+  transform: translateY(-5px);
+}
+
+.insect-image {
+  width: 80px;
+  height: auto;
+  object-fit: cover;
+}
