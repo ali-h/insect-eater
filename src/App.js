@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Owl from './components/Owl';
 import InsectTiles from './components/InsectTiles';
 import Insect from './components/Insect';
@@ -14,7 +14,7 @@ const App = () => {
   const addInsect = (id, type, position) => {
     // Add the insect to the insects object
     let newInsects = Object.assign({}, insects);
-    newInsects[id] = { type, position }
+    newInsects[id] = { type, position };
     setInsects(newInsects);
   };
 

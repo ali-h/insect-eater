@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import antImage from '../assets/images/ant.png';
 import beetleImage from '../assets/images/beetle.png';
 import waspImage from '../assets/images/wasp.png';
+
+// Library for dragging elements
 import Draggable from 'react-draggable';
 import '../styles/Insect.css';
 
@@ -15,10 +17,11 @@ const Insect = ({ id, type, position, setInsectPosition, draggableArea, checkFor
     
     // Adjustment in percentages
     if (y > 0)
-    y += 70
+      y += 70;
     else
-    y += 80
-    x += 40
+      y += 80;
+
+    x += 40;
 
     setInsectPosition({ x, y });
     checkForRemoval(id);
